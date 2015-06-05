@@ -11623,12 +11623,12 @@
             <remarks>The amount of objects found in the last processed image.</remarks>
             
         </member>
-        <member name="P:AForge.Imaging.Filters.AreaComponentsLabeling.low">
+        <member name="P:AForge.Imaging.Filters.AreaComponentsLabeling.Low">
             <summary>
             below this value will be colored green
             </summary>
         </member>
-        <member name="P:AForge.Imaging.Filters.AreaComponentsLabeling.high">
+        <member name="P:AForge.Imaging.Filters.AreaComponentsLabeling.High">
             <summary>
             above this value will be colored red
             </summary>

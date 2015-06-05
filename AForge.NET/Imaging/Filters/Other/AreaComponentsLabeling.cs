@@ -173,16 +173,17 @@ namespace AForge.Imaging.Filters
             formatTranslations[PixelFormat.Format32bppArgb]   = PixelFormat.Format24bppRgb;
             formatTranslations[PixelFormat.Format32bppPArgb]  = PixelFormat.Format24bppRgb;
         }
+
+        private int low=1000; // default low value
+        private int high=10000;  // default low value
         /// <summary>
         /// below this value will be colored green
         /// </summary>
-        [System.ComponentModel.DefaultValue(3.0)]
-        public double low { get; set; }
+        public int Low { get { return low; } set { low = value; } }
         /// <summary>
         /// above this value will be colored red
         /// </summary>
-        [System.ComponentModel.DefaultValue(4.0)]
-        public double high { get; set; }
+        public int High { get { return high; } set { high = value; } }
 
         /// <summary>
         /// Process the filter on the specified image.
@@ -218,8 +219,8 @@ namespace AForge.Imaging.Filters
                     if ( labels[p] != 0 )
                     {
                         Color c = colorTable[1]; // default to middle color
-                        if (Math.Log10(blobs[labels[p] - 1].Area) < low) { c = colorTable[0]; } // low color
-                        else if (Math.Log10(blobs[labels[p] - 1].Area) > high) { c = colorTable[2]; } // high color
+                        if (blobs[labels[p] - 1].Area < low) { c = colorTable[0]; } // low color
+                        else if (blobs[labels[p] - 1].Area > high) { c = colorTable[2]; } // high color
                         dst[RGB.R] = c.R; dst[RGB.G] = c.G; dst[RGB.B] = c.B; // assign color
                     }
                 }
